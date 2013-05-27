@@ -12,7 +12,6 @@ from Tkinter import *
 import re
 import tkMessageBox
 import subprocess
-import sys
 
 class Timer:
     """
@@ -122,7 +121,7 @@ class Snorlax:
     def countdownStarted(self):
         m = re.match(r'\d+$', self.view.amount_entry.get())
         if not m:
-            self.view.show_warning('Invalid delay amount entered.', title='Format error',)
+            self.view.show_warning('Invalid delay amount entered.', title='Format error')
         elif not self.check_hibernation():
             total_secs = int(m.group(0)) * [1, 60, 3600][['s', 'm', 'h'].index(self.view.smh.get())]
             self.view.t = Timer(total_secs) # Set up the timer
