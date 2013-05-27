@@ -5,7 +5,7 @@
 #
 #   Tested under Windows 7.
 #   If the computer has hibernation enabled the computer will hibernate instead of sleeping.
-#   To prevent this, either run the program as an administrator and follow the promts,
+#   To prevent this, either run the program as an administrator and follow the prompts,
 #   or run "powercfg -H OFF" in a command window with admin rights.
 #
 from Tkinter import *
