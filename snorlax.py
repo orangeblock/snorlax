@@ -1,6 +1,5 @@
 #
 #
-#
 #   A simple program(w/ GUI) that puts the computer to sleep after a timer has expired.
 #
 #   Tested under Windows 7.
@@ -8,17 +7,21 @@
 #   To prevent this, either run the program as an administrator and follow the prompts,
 #   or run "powercfg -H OFF" in a command window with admin rights.
 #
-from Tkinter import *
 import re
-import tkMessageBox
 import subprocess
+import sys
+if sys.version_info[0] == 2:
+    from Tkinter import *
+    import tkMessageBox
+else:
+    from tkinter import *
 
 class Timer:
     """
         A timer widget.
     """
     def __init__(self, sec):
-        self.m = sec/60
+        self.m = sec//60
         self.s = sec%60
 
     def __str__(self):
@@ -139,7 +142,7 @@ class Snorlax:
         """
             Checks and returns if hibernation is enabled (True = enabled, False = disabled or user agrees for enabled)
         """
-        output = subprocess.check_output(['powercfg', '-A'])
+        output = subprocess.check_output(['powercfg', '-A'], universal_newlines=True)
         hibernation = re.search(r'are available.*[hH]ibernate.*not available', output, flags=re.DOTALL)
         if hibernation:
             if self.view.ask_yes_no("Hibernation is on. Would you like to disable it? (Pressing No will cause the computer to hibernate instead of going to soft sleep.)", title="Hibernation"):

@@ -4,7 +4,7 @@ Snorlax
 Puts the computer to sleep after a timer expires.
 
 Currently works only under Windows (tested under 7).  
-Python version: 2.7. No additional libraries required.   
+Python version: 2 or 3. No additional libraries required.   
 Uses the Tkinter GUI toolkit.
 
 Usage
